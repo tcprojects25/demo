@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Full page background with transparent overlay */
+        body {
+            background: url('https://ewardsdata.s3.ap-south-1.amazonaws.com/images/login_page_animation.gif') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Centered login container with transparent background, box shadow, and animation */
+        .login-container {
+            max-width: 450px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px); /* Modern transparent effect */
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-container h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .form-label {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .form-control {
+            border-radius: 15px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            font-size: 1.1rem;
+            padding: 12px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .message {
+            color: #dc3545;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #aaa;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Custom button to add smooth animation */
+        .btn-primary {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 123, 255, 0.4);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+
+        <!-- Flash message for invalid login -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="message">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+
+    <div class="footer">
+        <p>Don't have an account? <a href="{{ url_for('user_register') }}">Sign Up</a></p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Optional JS for input focus effect or other interactivity
+    document.getElementById('username').addEventListener('focus', function() {
+        this.style.borderColor = '#007bff';
+    });
+
+    document.getElementById('username').addEventListener('blur', function() {
+        this.style.borderColor = '#ddd';
+    });
+
+    document.getElementById('password').addEventListener('focus', function() {
+        this.style.borderColor = '#007bff';
+    });
+
+    document.getElementById('password').addEventListener('blur', function() {
+        this.style.borderColor = '#ddd';
+    });
+</script>
+
+</body>
+</html>

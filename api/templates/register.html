@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Secure E-Coupon</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://img.bgstatic.com/multiLang/image/social/252f182a289d7ca064a978622227e3161724869981888.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #6c63ff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #5753c9;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #000000;
+        }
+
+        #image-preview {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            margin-top: 10px;
+            border: 1px dashed #aaa;
+            padding: 10px;
+            display: none;
+        }
+
+        .form-control {
+            box-shadow: none !important;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Register Secure E-Coupon Using Blockchain</h2>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="coupon_name" class="form-label">Coupon Category</label>
+                <input type="text" class="form-control" id="coupon_name" name="coupon_name" placeholder="Coupon Name" required>
+            </div>
+            <div class="mb-3">
+                <label for="consumer_name" class="form-label">Consumer Name</label>
+                <input type="text" class="form-control" id="consumer_name" name="consumer_name" placeholder="Consumer Name" required>
+            </div>
+            <div class="mb-3">
+                <label for="consumer_number" class="form-label">Consumer Mobile Number</label>
+                <input type="text" class="form-control" id="consumer_number" name="consumer_number" placeholder="Consumer Mobile Number" required>
+            </div>
+            <div class="mb-3">
+                <label for="consumer_email" class="form-label">Consumer Email</label>
+                <input type="email" class="form-control" id="consumer_email" name="consumer_email" placeholder="Consumer Email" required>
+            </div>
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <select class="form-control" id="gender" name="gender" required>
+                    <option value="">-- Select Gender --</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="discount_amount" class="form-label">Discount Amount</label>
+                <input type="text" class="form-control" id="discount_amount" name="discount_amount" placeholder="Enter discount amount" required>
+            </div>
+            <div class="mb-3">
+                <label for="coupon_code" class="form-label">Coupon Code</label>
+                <input type="text" class="form-control" id="coupon_code" name="coupon_code" placeholder="Enter coupon code" required>
+            </div>
+            <div class="mb-3">
+                <label for="validity_date" class="form-label">Validity Date</label>
+                <input type="date" class="form-control" id="validity_date" name="validity_date" placeholder="Enter validity date" required>
+            </div>
+            <div class="mb-3">
+                <label for="identity_mark" class="form-label">Identity Mark</label>
+                <input type="text" class="form-control" id="identity_mark" name="identity_mark" placeholder="Enter identity mark" required>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload Coupon Image</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*" required onchange="previewImage(event)">
+                <img id="image-preview" alt="Image Preview">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Register</button>
+        </form>
+    </div>
+
+    <script>
+        function previewImage(event) {
+            const imagePreview = document.getElementById('image-preview');
+            const file = event.target.files[0];
+            if (file) {
+                imagePreview.src = URL.createObjectURL(file);
+                imagePreview.style.display = 'block';
+            } else {
+                imagePreview.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>
